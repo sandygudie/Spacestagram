@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import DisplayItem from "./DisplayItem";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-
+import DisplayText from "./DisplayText";
 
 function Display() {
 
@@ -28,22 +28,25 @@ function Display() {
 
   if (loading)
     return (
-      <Typography sx={{ color: '#008CBA' }} gutterBottom variant="h5" align="center">
-        Loading...
+      <Typography style={{ color: '#008CBA' }} gutterBottom variant="h6" align="center">
+        Loading...Please wait
       </Typography>
     );
   if (error)
     return (
-      <Typography sx={{ color: '#008CBA' }} gutterBottom variant="h6" align="center">
-        The page encountered some problems
+      <Typography style={{ color: 'red' }} gutterBottom variant="h6" align="center">
+       Error! The page encountered some problems
       </Typography>
     );
   return (
+    <>
+     <DisplayText />
     <Grid container spacing={3}>
       {data.map((item, i) => {
         return <DisplayItem key={i} items={item} />;
       })}
     </Grid>
+    </>
   );
 }
 
